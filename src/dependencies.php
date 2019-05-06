@@ -10,7 +10,14 @@ return function (App $app) {
         $settings = $c->get('settings')['renderer'];
         return new \Slim\Views\PhpRenderer($settings['template_path']);
     };
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($container['settings']['db']);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
 
+    $container['db'] = function ($container) use ($capsule) {
+        return $capsule;
+    };
     // monolog
     $container['logger'] = function ($c) {
         $settings = $c->get('settings')['logger'];
@@ -18,5 +25,8 @@ return function (App $app) {
         $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
         $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
         return $logger;
+    };
+    $container["AuthController"] = function ($c) {
+        return new \Controllers\AuthController($c);
     };
 };

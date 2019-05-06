@@ -1,16 +1,9 @@
 <template>
-  <div class="container">
-      Hello {{ name }}
-    </div>    
+  <router-view></router-view>  
 </template>
 
 <script>
 export default {
-  
-  data() {
-    return{
-      name: 'Vlad',
-    }
-  }
+  name: 'App'
 }
 </script>
