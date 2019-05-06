@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-      <div class="row">
+  <div class="container mt-5">
+      <div class="row mt-5">
         <div class="col-4">
           Hello {{ user.name}}
         </div>

@@ -27,6 +27,9 @@ return function (App $app) {
         return $logger;
     };
     $container["AuthController"] = function ($c) {
-        return new \Controllers\AuthController($c);
+        return new \Controllers\AuthController();
+    };
+    $container["PostController"] = function ($c) {
+        return new \Controllers\PostController();
     };
 };
