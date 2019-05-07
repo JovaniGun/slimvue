@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center mt-4 pt-5">
-      <div class="card m-2" style="width: 18rem;"
+<div class="container">
+  <div class="row justify-content-center mt-4 pt-5">
+      <div class="card m-3" style="width: 18rem;"
         v-for="post in posts" :key="post.id"
       >
         <div class="card-body">
@@ -9,12 +9,12 @@
             <h5 class="card-title">{{ post.title }}</h5>
             <button @click.prevent="deletePostById(post.id)"><i class="fas fa-trash" style="margin-bottom: .75rem; color:red;"></i></button>
           </div>
-          <p class="card-text">{{ post.content }}</p>
+          <router-link class="card-text" :to="`/post/${post.id}`">{{ post.preview }}</router-link>
           <!-- <a href="#" class="card-link">Ссылка карты</a> -->
         </div>
       </div>
     </div>
-  </div>
+</div>
 </template>
 <style scoped>
   .card-header{
@@ -39,9 +39,7 @@ export default {
   },
   methods:{
     ...mapActions("post",["getPosts","deletePostById"]),
-    // deletePostById(id){
-    //   this
-    // }
+
   },
   computed:{
         ...mapGetters("post",["posts"])

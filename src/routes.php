@@ -10,7 +10,10 @@ return function (App $app) {
 
     //Posts
     $app->get("/api/post/all", "PostController:index");
+    $app->post('/api/post/create', "PostController:create");
     $app->get("/api/post/delete/{id}", "PostController:delete");
+    $app->get("/api/post/{id}", "PostController:get");
+
     $app->get('/[{name}]', function (Request $request, Response $response, array $args) use ($container) {
         // Sample log message
         $container->get('logger')->info("Slim-Skeleton '/' route");

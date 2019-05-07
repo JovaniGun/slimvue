@@ -29,6 +29,16 @@ const actions = {
     {
       console.warn(err);
     }
+  },
+  async createPost({},data){
+    try{
+      ///console.log(data)
+      const response = await api.createPost(data);
+      console.log(response.data);
+   }catch(err)
+   {
+     console.warn(err);
+   }
   }
 }
 

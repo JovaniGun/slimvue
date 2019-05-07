@@ -5,6 +5,7 @@ import Main from "../components/Main.vue"
 import MainPage from "../components/Main/MainPage.vue"
 import AllPosts from "../components/Main/AllPosts.vue"
 import CreatePost from "../components/Main/CreatePost.vue"
+import SinglePost from "../components/Main/SinglePost.vue"
 import Login from "../components/Login.vue"
 Vue.use(Router);
 
@@ -29,6 +30,11 @@ const router = new Router({
            name:'main-postcreate',
            path: "post/create",
            component: CreatePost
+         },
+         {
+           name: 'main-singlepost',
+           path: "post/:id",
+           component: SinglePost
          }
 
        ]
